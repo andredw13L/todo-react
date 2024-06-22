@@ -66,13 +66,13 @@ function App() {
 
   const [filter, setFilter] = useState("all")
 
-  const [sort, setSort] = useState("Ascendente")
+  const [sort, setSort] = useState("asc")
 
   return (
     <div className="app">
       <h1>Lista de Tarefas</h1>
       <Search search={search} setSearch={setSearch}/>
-      <Filter filter={filter} setFilter={setFilter} />
+      <Filter filter={filter} setFilter={setFilter} setSort={setSort}/>
       <div className="todo-list">
         {todos
           .filter(
@@ -81,9 +81,14 @@ function App() {
               : filter === "completed" 
               ? todo.isCompleted 
               : !todo.isCompleted
-            )
+          )
           .filter(
             (todo) => todo.text.toLowerCase().includes(search.toLowerCase())
+          )
+          .sort((a, b) => 
+            sort == "asc"
+              ? a.text.localeCompare(b.text) 
+              : b.text.localeCompare(a.text)
           )
           .map((todo) => (
             <Todo 
