@@ -4,6 +4,7 @@ import Todo from "./components/Todo"
 import TodoForm from "./components/TodoForm"
 import Search from "./components/Search"
 import Filter from "./components/Filter"
+import RemoveAll from "./components/RemoveAll"
 
 function App() {
 
@@ -62,6 +63,10 @@ function App() {
     setTodos(newTodos)
   }
 
+  const removeAllTodos = () => {
+    setTodos([]);
+  };
+
   const [search, setSearch] = useState("")
 
   const [filter, setFilter] = useState("all")
@@ -99,6 +104,8 @@ function App() {
         ))}
       </div>
       <TodoForm addTodo={addTodo}/>
+      <hr/>
+      <RemoveAll removeAllTodos={removeAllTodos}/>
     </div>
   )
 }

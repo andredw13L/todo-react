@@ -100,3 +100,15 @@ input, select {
 .filter-options div {
   flex: 1 1 0;
 }
+
+.remove-all-container {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.remove-all-button {
+  background-color: darkred;
+  padding: 8px 16px;
+}
